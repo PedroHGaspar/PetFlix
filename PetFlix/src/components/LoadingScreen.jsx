@@ -1,23 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import '../App.css'
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "../App.css";
+
 function LoadingScreen() {
-  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
-      setLoading(false);
+      navigate("/home");
     }, 3000);
-  }, []);
+  }, [navigate]);
 
-  if (loading) {
-    return (
-      <div className="loading-screen">
-        <img className="img-logo-loading-screen" src="/petflix-logo.png" alt="Petflix Logo" />
-      </div>
-    );
-  }
-
-  return <div>AAAAAAAAAAAAAAAAAAAAAA</div>;
+  return (
+    <div className="loading-screen">
+      <img
+        className="img-logo-loading-screen"
+        src="/petflix-logo.png"
+        alt="Petflix Logo"
+      />
+    </div>
+  );
 }
 
 export default LoadingScreen;
