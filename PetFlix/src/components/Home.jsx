@@ -1,12 +1,21 @@
 import "../App.css";
 function Home() {
-
-
-
   return (
-    <div className="home-screen-container">
-      <p>oieieeoeieoieioeio</p>
-    </div>
+    <section className="home-screen-container">
+      <div>
+        <h3></h3>
+        <h1></h1>
+        <div>
+          <label></label>
+          <label></label>
+          <label></label>
+          <label></label>
+          <label></label>
+        </div>
+        <p></p>
+        <p></p>
+      </div>
+    </section>
   );
 }
 
