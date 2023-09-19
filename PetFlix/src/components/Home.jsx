@@ -1,5 +1,6 @@
 import "../App.css";
 import Menu from './Menu';
+import MovieList from './MovieList';
 
 function Home() {
   return (
@@ -35,6 +36,7 @@ function Home() {
           </div>
         </div>
       </section>
+      <MovieList />
     </div>
   );
 }
