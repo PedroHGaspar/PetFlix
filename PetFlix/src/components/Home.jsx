@@ -2,18 +2,25 @@ import "../App.css";
 function Home() {
   return (
     <section className="home-screen-container">
-      <div>
-        <h3></h3>
-        <h1></h1>
-        <div>
-          <label></label>
-          <label></label>
-          <label></label>
-          <label></label>
-          <label></label>
+      <img className="background-image-home" src="/pets-image.jpg" alt="" />
+      <div className="content-body-filme-principal">
+        <h3 className="title-home">NETFLIX <span>ORIGINAL</span></h3>
+        <h1 className="subtitle-home">PETS - A Vida Secreta dos Bichos</h1>
+        <div className="items-text-lista-home">
+          <label className="first-item-label-home">98% Match</label>
+          <label className="second-item-label-home">2016</label>
+          <label className="third-item-label-home">Animação</label>
+          <label className="fourth-item-label-home">4K Ultra HD</label>
+          <label className="fifth-item-label-home">5.1</label>
         </div>
-        <p></p>
-        <p></p>
+        <p className="sinopse-home">
+          Dois cachorros de estimação brigões se unem para lutar contra uma
+          gangue de animais bravos que prepara um ataque contra os humanos.
+        </p>
+        <p className="elenco-home">
+          Kevin Hart, Chris Renaud, Jenny Slate, Lake Bell, Louis C.K. e Eric
+          Stonestreet
+        </p>
       </div>
     </section>
   );
