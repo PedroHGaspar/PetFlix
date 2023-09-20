@@ -1,6 +1,6 @@
 import "../App.css";
 import Menu from './Menu';
-import MovieList from './MovieList';
+import MovieListDogs from './MovieListDogs';
 
 function Home() {
   return (
@@ -36,7 +36,7 @@ function Home() {
           </div>
         </div>
       </section>
-      <MovieList />
+      <MovieListDogs />
     </div>
   );
 }
