@@ -8,7 +8,7 @@ function Home() {
       {/* <Menu /> */}
       <section className="home-screen-container">
         <img className="background-image-home imagem sem-blur" src="/pets-image.jpg" alt="" />
-        <div class="mascara-blur"></div>
+        <div className="mascara-blur"></div>
         <div className="content-body-filme-principal">
           <h3 className="title-home">PETFLIX <span>ORIGINAL</span></h3>
           <h1 className="subtitle-home">PETS - A Vida Secreta dos Bichos</h1>

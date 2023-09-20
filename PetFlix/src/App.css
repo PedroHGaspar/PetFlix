@@ -186,7 +186,6 @@
   }
 }
 
-/* Em seu arquivo de estilos CSS (por exemplo, App.css) */
 .menu {
   position: fixed;
   top: 0;
@@ -228,10 +227,11 @@
 
 .movie-list {
   position: relative;
-  margin: 0 auto;
-  max-width: 90%;
+  max-width: 100%;
+  margin: 0;
   padding: 20px 0;
   z-index: 1;
+  overflow-x: hidden;
 }
 
 .movie-slide {
@@ -240,15 +240,17 @@
   align-items: center;
   justify-content: flex-start;
   padding: 10px;
-  width: 300px;
+  max-width: 280px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .movie-slide img {
   width: 100%;
   height: auto;
-  max-width: 300px;
-  max-height: 450px;
+  max-height: 300px;
 }
+
 
 .slick-slider {
   margin: 0 -10px;
