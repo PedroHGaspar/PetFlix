@@ -40,7 +40,9 @@ const MovieListDogs = () => {
         const updatedShowText = [...showText];//aqui usando o spread eu clonei o array showText
         updatedShowText[index] = !updatedShowText[index]; //aqui eu pego um valor especifico do array e inverte ele com o operador !
         setShowText(updatedShowText); //aqui eu atualizo o estado showText com o novo array, informando que o estado foi alterado e o texto será mostrado do item daquele índice em que o mouse está pegando.
+        console.log(updatedShowText, "UPDATESHOWTEXT")
     };
+    
 
     return (
         <div className="movie-list">
