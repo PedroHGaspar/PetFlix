@@ -9,11 +9,12 @@
 }
 
 .testeImg {
-    width: 100%;
-    height: auto;
-    max-height: 300px;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
     transition: opacity 0.3s ease;
 }
+
 
 .movie-slide.show-text .testeImg {
     opacity: 0.7;

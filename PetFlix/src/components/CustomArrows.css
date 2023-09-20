@@ -1,7 +1,7 @@
 .custom-arrow {
     font-size: 30px;
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.3);
+    /* background-color: rgba(0, 0, 0, 0.3); */
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -15,8 +15,12 @@
     z-index: 2;
 }
 
-.custom-arrow:hover {
+/* .custom-arrow:hover {
     background-color: rgba(0, 0, 0, 0.6);
+} */
+
+.custom-arrow i {
+    color: #fff;
 }
 
 .custom-arrow-prev {
@@ -27,11 +31,11 @@
     right: 10px;
 }
 
-.custom-arrow::before{
+.custom-arrow::before {
     content: "";
 }
 
-.custom-arrow{
+.custom-arrow {
     height: 100%;
     border-radius: inherit;
 }

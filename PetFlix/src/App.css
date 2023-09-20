@@ -232,6 +232,7 @@
   padding: 20px 0;
   z-index: 1;
   overflow-x: hidden;
+  margin-top: 20vh;
 }
 
 .movie-slide {
@@ -246,14 +247,21 @@
 }
 
 .movie-slide img {
-  width: 100%;
-  height: auto;
-  max-height: 300px;
+  width: 260px;
+  height: 146px;
+  max-height: 100%;
+  max-width: 100%;
 }
+
 
 
 .slick-slider {
   margin: 0 -10px;
+  padding: 0rem 4rem;
+}
+
+.slick-slide{
+  text-align: center;
 }
 
 .slick-prev,
