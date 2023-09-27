@@ -2,7 +2,7 @@ import "../App.css";
 import Menu from './Menu';
 import MovieListDogs from './MovieListDogs';
 
-function Home() {
+function HomeGatos() {
   return (
     <div>
       {/* <Menu /> */}
@@ -41,4 +41,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomeGatos;

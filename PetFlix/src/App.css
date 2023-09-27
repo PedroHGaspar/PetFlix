@@ -298,37 +298,77 @@
   display: flex;
   width: 100%;
   margin: 0 auto;
-  gap: 2.5rem;
+  gap: 1.5rem;
   justify-content: center;
   align-items: center;
   height: auto;
-  /* margin-top: 37vh; */
   text-align: center;
-  overflow: hidden;
   max-width: 100%;
-  height: 97vh;
   overflow: hidden;
+  height: 39vh;
 }
 
 .cachorro-perfil {
   transition: transform 0.3s ease-in-out;
   transform: scale(1);
+  border-radius: 5px;
 }
 
 .gato-perfil {
   transition: transform 0.3s ease-in-out;
   transform: scale(1);
+  border-radius: 5px;
 }
 
 .cachorro-perfil:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .gato-perfil:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .loading-text {
   text-align: center;
   margin-bottom: 1rem;
 }
+
+.align-home-text-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh
+}
+
+.quem-assiste {
+  color: #fff;
+  font-size: 3.5vw;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-family: sans-serif;
+}
+
+.nome-perfil {
+  color: #959595;
+  display: flex;
+  position: absolute;
+  width: 13%;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  font-size: 1.5vw;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-family: sans-serif;
+}
+
+.cachorro-perfil:hover+.nome-perfil,
+.gato-perfil:hover+.nome-perfil {
+  /* estou selecionando o elemento com a classe .nome-perfil que é um irmão adjacente do elemento com a classe .cachorro-perfil e que aparece imediatamente após ele no DOM.*/
+  color: #fff;
+}
+
+/* .cachorro-perfil:hover, .gato-perfil:hover{
+  border: 4px solid #fff;
+} */
