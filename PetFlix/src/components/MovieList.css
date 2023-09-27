@@ -25,14 +25,14 @@
     top: 100%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #141414;
+    background-color: #141414d2;
     color: white;
     padding: 8px 16px;
     border-radius: 4px;
     font-size: 16px;
     opacity: 0;
     transition: opacity 0.3s ease;
-    width: 104%;
+    width: 108.5%;
     font-weight: bold;
     letter-spacing: 1px;
 }
