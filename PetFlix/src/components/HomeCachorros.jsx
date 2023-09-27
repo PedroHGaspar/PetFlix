@@ -1,16 +1,39 @@
+import React, { useEffect } from "react";
 import "../App.css";
-import Menu from './Menu';
-import MovieListDogs from './MovieListDogs';
+import Menu from "./Menu";
+import MovieListDogs from "./MovieListDogs";
 
-function HomeCachorros() {
+function HomeGatos() {
+  const playAudio = () => {
+    const audio = new Audio("/audio-cachorro.mp3"); // Cria um elemento de áudio
+    audio.currentTime = 0; // Reinicia o áudio se já estiver tocando
+    audio.play();
+  };
+
+  // Adicione um evento de clique ao elemento document para reproduzir o áudio
+  useEffect(() => {
+    document.addEventListener("click", playAudio);
+
+    // Limpe o evento de clique quando o componente for desmontado
+    return () => {
+      document.removeEventListener("click", playAudio);
+    };
+  }, []);
+
   return (
     <div>
       {/* <Menu /> */}
       <section className="home-screen-container">
-        <img className="background-image-home imagem sem-blur" src="/pets-image.jpg" alt="" />
+        <img
+          className="background-image-home imagem sem-blur"
+          src="/pets-image.jpg"
+          alt=""
+        />
         <div className="mascara-blur"></div>
         <div className="content-body-filme-principal">
-          <h3 className="title-home">PETFLIX <span>ORIGINAL</span></h3>
+          <h3 className="title-home">
+            PETFLIX <span>ORIGINAL</span>
+          </h3>
           <h1 className="subtitle-home">PETS - A Vida Secreta dos Bichos</h1>
           <div className="items-text-lista-home">
             <label className="first-item-label-home">98% Match</label>
@@ -32,7 +55,6 @@ function HomeCachorros() {
               <i className="fa fa-play icon-play"></i>
               <span className="button-assistir-text">Assistir</span>
             </button>
-            {/* <button>MAIS INFORMAÇÕES</button> */}
           </div>
         </div>
       </section>
@@ -41,4 +63,4 @@ function HomeCachorros() {
   );
 }
 
-export default HomeCachorros;
+export default HomeGatos;
