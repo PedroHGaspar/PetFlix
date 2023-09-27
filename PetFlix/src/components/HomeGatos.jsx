@@ -1,13 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../App.css";
 import Menu from "./Menu";
 import MovieListCats from "./MovieListCats";
+import Modal from "react-modal";
 
 function HomeGatos() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Função para reproduzir o áudio quando o usuário clica em qualquer lugar da tela
   const playAudio = () => {
-    const audio = new Audio("/audio-gato.mp3"); // Cria um elemento de áudio
-    audio.currentTime = 0; // Reinicia o áudio se já estiver tocando
+    const audio = new Audio("/audio-gato.mp3");
+    audio.currentTime = 0;
     audio.play();
   };
 
@@ -20,6 +23,16 @@ function HomeGatos() {
       document.removeEventListener("click", playAudio);
     };
   }, []);
+
+  // Função para abrir o modal
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  // Função para fechar o modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div>
@@ -52,7 +65,7 @@ function HomeGatos() {
             Stonestreet
           </p>
           <div>
-            <button className="button-start-home">
+            <button className="button-start-home" onClick={openModal}>
               <i className="fa fa-play icon-play"></i>
               <span className="button-assistir-text">Assistir</span>
             </button>
@@ -60,6 +73,19 @@ function HomeGatos() {
         </div>
       </section>
       <MovieListCats />
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Reprodutor de Vídeo"
+        ariaHideApp={false}
+      >
+        <iframe
+          width="1260"
+          height="762"
+          src="https://www.youtube.com/embed/i-80SGWfEjM?si=TBcMChZlkNsmFFbR"
+          title="Reprodutor de Vídeo"
+        ></iframe>
+      </Modal>
     </div>
   );
 }

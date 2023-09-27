@@ -8,21 +8,21 @@ import { CustomNextArrow, CustomPrevArrow } from './CustomArrows';
 import './MovieList.css';
 
 const filmes = [
-    { titulo: 'Gato 1', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 2', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 1', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 2', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 1', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 2', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
+    { titulo: 'Gatos Adoráveis', imgSource: '/gato-fofo-1.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/b8iTTiU7Ot0?si=3sEThmgrA4Tvy_LG' },
+    { titulo: 'Gatos Fofos', imgSource: '/gato-fofo-2.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/LMD6MqwErzc?si=mbCvxhLmEV2pAeU4' },
+    { titulo: 'Gatos engraçados', imgSource: '/gato-fofo-3.jpg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/4R6woWfjC3I?si=_yktfVJY9qMaKlpG' },
+    { titulo: 'Gatos Fofos 4K', imgSource: '/gato-fofo-4.jpg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/_f0XcVwNa8A?si=Mk0tKEhnE4K-TpeZ' },
+    { titulo: 'Gatos Carinhosos', imgSource: '/gato-fofo-5.jpg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/E5Rn1HbTwWA?si=nY6AxMojNvyKJt82' },
+    { titulo: 'Gatos Super Fofos', imgSource: '/gato-fofo-6.png', descricao: '.', videoUrl: 'https://www.youtube.com/embed/R3UdXDJtQro?si=TEWiNtDyliG83mAx' },
 ];
 
 const filmesDormir = [
-    { titulo: 'Gato 1', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 2', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 1', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 2', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 1', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 2', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
+    { titulo: 'Música Gato Relaxar', imgSource: '/gato-dormindo-1.jpg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/8Fdkgo5EOXA?si=zNbJxmqptyfZFP1k' },
+    { titulo: 'Música Gato Dormir', imgSource: '/gato-dormindo-2.png', descricao: '.', videoUrl: 'https://www.youtube.com/embed/3hfy3hRi16U?si=tu_XU_4Arw48ia_r' },
+    { titulo: 'Canção Ninar', imgSource: '/gato-dormindo-3.jpg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/pCsR3OwMEjg?si=G8GeZWzHwEPZ3MPG' },
+    { titulo: 'Ronronar Pra Dormir', imgSource: '/gato-dormindo-4.jpg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/4d3-RRFi_bU?si=dQb-7MS_i8HWZX0n' },
+    { titulo: 'Canção Dormir', imgSource: '/gato-dormindo-5.jpg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/Es3kOyfeLMo?si=da6fLnAfsi8x4PBJ' },
+    { titulo: 'Relaxamento Gatos', imgSource: '/gato-dormindo-6.jpg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/sn2YTJ1wjtY?si=42HwTJEq867YWqVF' },
 ];
 
 const MovieListCats = () => {

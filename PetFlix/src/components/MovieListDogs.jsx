@@ -8,21 +8,21 @@ import { CustomNextArrow, CustomPrevArrow } from './CustomArrows';
 import './MovieList.css';
 
 const filmes = [
-    { titulo: 'Gato 1', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 2', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 1', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 2', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 1', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 2', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
+    { titulo: 'Cachorros Brincando', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/9DhCUZaNIm4?si=09WLf5zo-EBZVr4r' },
+    { titulo: 'Cachorros No Jardim', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/f_QLiKS3aug?si=h_z7PDhKbL9C8JDG' },
+    { titulo: 'Cachorros Filhotes Latindo', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/-sR9G5ZWj2w?si=VlThasq0uCL1m5Fz' },
+    { titulo: 'Cachorros Correndo', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/r9-Hd_vuHV4?si=CRpDlO-SYQki5rQZ' },
+    { titulo: 'Cachorros Curiosos', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/QYZLUamaweQ?si=cW-7QiDz21tVABgS' },
+    { titulo: 'Cachorros Fofos', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/N7TX7mp871M?si=fqTtcEtiyVFYsk0a' },
 ];
 
 const filmesDormir = [
-    { titulo: 'Gato 1', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 2', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 1', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 2', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 1', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
-    { titulo: 'Gato 2', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/5RXA4F1wJYc?si=HiShhoAxEEQdNEFX' },
+    { titulo: 'Cachorros Dormindo', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/SA2RM3b8NNM?si=0Zks59P06uR0eIpI' },
+    { titulo: 'Cachorros Dormindo', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/SA2RM3b8NNM?si=0Zks59P06uR0eIpI' },
+    { titulo: 'Cachorros Dormindo', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/SA2RM3b8NNM?si=0Zks59P06uR0eIpI' },
+    { titulo: 'Cachorros Dormindo', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/SA2RM3b8NNM?si=0Zks59P06uR0eIpI' },
+    { titulo: 'Cachorros Dormindo', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/SA2RM3b8NNM?si=0Zks59P06uR0eIpI' },
+    { titulo: 'Cachorros Dormindo', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/SA2RM3b8NNM?si=0Zks59P06uR0eIpI' },
 ];
 
 const MovieListDogs = () => {
