@@ -1,6 +1,6 @@
 import "../App.css";
 import Menu from './Menu';
-import MovieListDogs from './MovieListDogs';
+import MovieListCats from './MovieListCats';
 
 function HomeGatos() {
   return (
@@ -36,7 +36,7 @@ function HomeGatos() {
           </div>
         </div>
       </section>
-      <MovieListDogs />
+      <MovieListCats />
     </div>
   );
 }

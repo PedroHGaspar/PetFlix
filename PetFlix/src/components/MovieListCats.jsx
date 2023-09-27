@@ -25,7 +25,7 @@ const filmesDormir = [
     // Adicione mais filmes para gatos dormirem aqui
 ];
 
-const MovieListDogs = () => {
+const MovieListCats = () => {
     const [isHovered, setIsHovered] = useState(null);
     const [showText, setShowText] = useState(Array(filmes.length).fill(false));
 
@@ -61,7 +61,7 @@ const MovieListDogs = () => {
     return (
         <div className="movie-list">
             <div className="movie-list-title">
-                <p className='text-title-list'>Para o seu cachorro assistir</p>
+                <p className='text-title-list'>Para o seu gato assistir</p>
             </div>
 
             <Slider {...settings}> {/* aqui no spread é renderizado o Slider(componente pronto do react), isso cria o carrossel */}
@@ -90,7 +90,7 @@ const MovieListDogs = () => {
             </Slider>
 
             <div className="movie-list-title">
-                <p className='text-title-list'>Para o seu cachorro dormir</p>
+                <p className='text-title-list'>Para o seu gato dormir</p>
             </div>
 
             <Slider {...settings}>
@@ -120,4 +120,4 @@ const MovieListDogs = () => {
     );
 };
 
-export default MovieListDogs;
+export default MovieListCats;
