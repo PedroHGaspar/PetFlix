@@ -1,145 +1,195 @@
-import React, { useState } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Modal from 'react-modal';
-import './CustomArrows.css';
-import { CustomNextArrow, CustomPrevArrow } from './CustomArrows';
-import './MovieList.css';
-
-const filmes = [
-    { titulo: 'Cachorros Brincando', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/9DhCUZaNIm4?si=09WLf5zo-EBZVr4r' },
-    { titulo: 'Cachorros No Jardim', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/f_QLiKS3aug?si=h_z7PDhKbL9C8JDG' },
-    { titulo: 'Cachorros Filhotes Latindo', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/-sR9G5ZWj2w?si=VlThasq0uCL1m5Fz' },
-    { titulo: 'Cachorros Correndo', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/r9-Hd_vuHV4?si=CRpDlO-SYQki5rQZ' },
-    { titulo: 'Cachorros Curiosos', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/QYZLUamaweQ?si=cW-7QiDz21tVABgS' },
-    { titulo: 'Cachorros Fofos', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/N7TX7mp871M?si=fqTtcEtiyVFYsk0a' },
-];
-
-const filmesDormir = [
-    { titulo: 'Cachorros Dormindo', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/SA2RM3b8NNM?si=0Zks59P06uR0eIpI' },
-    { titulo: 'Cachorros Dormindo', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/SA2RM3b8NNM?si=0Zks59P06uR0eIpI' },
-    { titulo: 'Cachorros Dormindo', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/SA2RM3b8NNM?si=0Zks59P06uR0eIpI' },
-    { titulo: 'Cachorros Dormindo', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/SA2RM3b8NNM?si=0Zks59P06uR0eIpI' },
-    { titulo: 'Cachorros Dormindo', imgSource: '/bolt.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/SA2RM3b8NNM?si=0Zks59P06uR0eIpI' },
-    { titulo: 'Cachorros Dormindo', imgSource: '/marley.jpeg', descricao: '.', videoUrl: 'https://www.youtube.com/embed/SA2RM3b8NNM?si=0Zks59P06uR0eIpI' },
-];
+import React, { useState, useEffect } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Modal from "react-modal";
+import axios from "axios";
+import { initializeApp } from "firebase/app"; // Importe a função initializeApp
+import { getDatabase, ref, get } from "firebase/database"; // Importe as funções necessárias do Realtime Database
+import "./CustomArrows.css";
+import { CustomNextArrow, CustomPrevArrow } from "./CustomArrows";
+import "./MovieList.css";
 
 const MovieListDogs = () => {
-    const [isHovered, setIsHovered] = useState(null);
-    const [showText, setShowText] = useState(Array(filmes.length).fill(false));
+  const [watchingMoviesHovered, setWatchingMoviesHovered] = useState(null);
+  const [sleepingMoviesHovered, setSleepingMoviesHovered] = useState(null);
+  const [showText, setShowText] = useState([]);
+  const [showText2, setShowText2] = useState([]);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [firebaseLinks, setFirebaseLinks] = useState([]);
+  const [watchingMovies, setWatchingMovies] = useState([]); // Array para "Para o seu cachorro assistir"
+  const [sleepingMovies, setSleepingMovies] = useState([]);
 
-    const [isHoveredDormir, setIsHoveredDormir] = useState(null);
-    const [showTextDormir, setShowTextDormir] = useState(Array(filmesDormir.length).fill(false));
-
-    const [selectedVideo, setSelectedVideo] = useState(null);
-
-    const openVideoModal = (videoUrl) => {
-        setSelectedVideo(videoUrl);
+  useEffect(() => {
+    // Inicialize o Firebase com sua configuração
+    const firebaseConfig = {
+      apiKey: "AIzaSyCzhuq6suPTr8IGH6nOtGsjH6HTOLlaNFg",
+      authDomain: "petflix-37fdd.firebaseapp.com",
+      databaseURL: "https://petflix-37fdd-default-rtdb.firebaseio.com",
+      projectId: "petflix-37fdd",
+      storageBucket: "petflix-37fdd.appspot.com",
+      messagingSenderId: "572817167140",
+      appId: "1:572817167140:web:10cff7ffa1c2c2fc8899b1",
+      measurementId: "G-SHD345XZEY",
     };
 
-    const closeVideoModal = () => {
-        setSelectedVideo(null);
-    };
+    const app = initializeApp(firebaseConfig);
 
-    const settings = {
-        infinite: true,
-        speed: 500,
-        slidesToShow: 6,
-        slidesToScroll: 6,
-        nextArrow: <CustomNextArrow />,
-        prevArrow: <CustomPrevArrow />,
-    };
+    const database = getDatabase(app);
 
-    const toggleTextVisibility = (index) => {
-        const updatedShowText = [...showText];
-        updatedShowText[index] = !updatedShowText[index];
-        setShowText(updatedShowText);
-    };
+    const videoLinksRef = ref(database, "/");
 
-    const toggleTextVisibilityDormir = (index) => {
-        const updatedShowTextDormir = [...showTextDormir];
-        updatedShowTextDormir[index] = !updatedShowTextDormir[index];
-        setShowTextDormir(updatedShowTextDormir);
-    };
+    get(videoLinksRef)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const allLinks = Object.values(snapshot.val());
+          setFirebaseLinks(allLinks);
 
-    return (
-        <div className="movie-list">
-            <div className="movie-list-title">
-                <p className='text-title-list'>Para o seu cachorro assistir</p>
+          // Divida os links em duas categorias
+          const watchingMovies = allLinks.slice(0, 6); // 6 primeiros para assistir
+          const sleepingMovies = allLinks.slice(6, 12); // Próximos 6 para dormir
+
+          setWatchingMovies(watchingMovies);
+          setSleepingMovies(sleepingMovies);
+        }
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar os links do Firebase:", error);
+      });
+  }, []);
+
+  const openVideoModal = (videoUrl) => {
+    setSelectedVideo(videoUrl);
+  };
+
+  const closeVideoModal = () => {
+    setSelectedVideo(null);
+  };
+
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    nextArrow: <CustomNextArrow />,
+    prevArrow: <CustomPrevArrow />,
+  };
+
+  const toggleTextVisibility = (index) => {
+    const updatedShowText = [...showText];
+    updatedShowText[index] = !updatedShowText[index];
+    const updatedShowText2 = [...showText];
+    updatedShowText[index] = !updatedShowText[index];
+    setShowText(updatedShowText);
+    setShowText2(updatedShowText);
+  };
+
+  const imageExtensions = [".jpeg", ".jpg", ".png"];
+
+  return (
+    <div className="movie-list">
+      <div className="movie-list-title">
+        <p className="text-title-list">Para o seu cachorro assistir</p>
+      </div>
+
+      <Slider {...settings}>
+        {watchingMovies.map((videoUrl, index) => (
+          <div
+            key={index}
+            onClick={() => openVideoModal(videoUrl)}
+            className={`movie-slide ${showText[index] ? "show-text" : ""} ${
+              watchingMoviesHovered === index ? "hovered" : ""
+            }`}
+            onMouseEnter={() => {
+              toggleTextVisibility(index);
+              setWatchingMoviesHovered(index);
+            }}
+            onMouseLeave={() => {
+              toggleTextVisibility(index);
+              setWatchingMoviesHovered(null);
+            }}
+          >
+            <div className="slide-content">
+              <img
+                className="img-list"
+                src={`/cachorro-fofo-${index + 1}.jfif`}
+                alt={`cachorro Fofo${index + 1}`}
+              />
+              {showText[index] && (
+                <div className="movie-title">{`cachorro Fofo Brincando`}</div>
+              )}
             </div>
+          </div>
+        ))}
+      </Slider>
 
-            <Slider {...settings}>
-                {filmes.map((filme, index) => (
-                    <div
-                        key={index}
-                        onClick={() => openVideoModal(filme.videoUrl)}
-                        className={`movie-slide ${showText[index] ? 'show-text' : ''} ${isHovered === index ? 'hovered' : ''}`}
-                        onMouseEnter={() => {
-                            toggleTextVisibility(index);
-                            setIsHovered(index);
-                        }}
-                        onMouseLeave={() => {
-                            toggleTextVisibility(index);
-                            setIsHovered(null);
-                        }}
-                    >
-                        <div className="slide-content">
-                            <img className="img-list" src={filme.imgSource} alt={filme.titulo} />
-                            {showText[index] && (
-                                <div className="movie-title">{filme.titulo}</div>
-                            )}
-                        </div>
-                    </div>
-                ))}
-            </Slider>
+      <Modal
+        isOpen={selectedVideo !== null}
+        onRequestClose={closeVideoModal}
+        contentLabel="Reprodutor de Vídeo"
+        ariaHideApp={false}
+      >
+        {selectedVideo && (
+          <iframe
+            width="1000"
+            height="500"
+            src={selectedVideo}
+            title="Reprodutor de Vídeo"
+          ></iframe>
+        )}
+      </Modal>
+      <div className="movie-list-title">
+        <p className="text-title-list">Para o seu cachorro Dormir</p>
+      </div>
 
-            <div className="movie-list-title">
-                <p className='text-title-list'>Para o seu cachorro dormir</p>
+      <Slider {...settings}>
+        {sleepingMovies.map((videoUrl, index) => (
+          <div
+            key={index}
+            onClick={() => openVideoModal(videoUrl)}
+            className={`movie-slide ${showText2[index] ? "show-text" : ""} ${
+              sleepingMoviesHovered === index ? "hovered" : ""
+            }`}
+            onMouseEnter={() => {
+              toggleTextVisibility(index);
+              setSleepingMoviesHovered(index);
+            }}
+            onMouseLeave={() => {
+              toggleTextVisibility(index);
+              setSleepingMoviesHovered(null);
+            }}
+          >
+            <div className="slide-content">
+              <img
+                className="img-list"
+                src={`/cachorro-dormindo-${index + 1}.jpg`}
+                alt={`cachorro Dormindo${index + 1}`}
+              />
+              {showText2[index] && (
+                <div className="movie-title">{`cachorro Fofo Dormindo`}</div>
+              )}
             </div>
+          </div>
+        ))}
+      </Slider>
 
-            <Slider {...settings}>
-                {filmesDormir.map((filme, index) => (
-                    <div
-                        key={index}
-                        onClick={() => openVideoModal(filme.videoUrl)}
-                        className={`movie-slide ${showTextDormir[index] ? 'show-text' : ''} ${isHoveredDormir === index ? 'hovered' : ''}`}
-                        onMouseEnter={() => {
-                            toggleTextVisibilityDormir(index);
-                            setIsHoveredDormir(index);
-                        }}
-                        onMouseLeave={() => {
-                            toggleTextVisibilityDormir(index);
-                            setIsHoveredDormir(null);
-                        }}
-                    >
-                        <div className="slide-content">
-                            <img className="img-list" src={filme.imgSource} alt={filme.titulo} />
-                            {showTextDormir[index] && (
-                                <div className="movie-title">{filme.titulo}</div>
-                            )}
-                        </div>
-                    </div>
-                ))}
-            </Slider>
-
-            <Modal
-                isOpen={selectedVideo !== null}
-                onRequestClose={closeVideoModal}
-                contentLabel="Reprodutor de Vídeo"
-                ariaHideApp={false}
-            >
-                {selectedVideo && (
-                    <iframe
-                        width="1260"
-                        height="762"
-                        src={selectedVideo}
-                        title="Reprodutor de Vídeo"
-                    ></iframe>
-                )}
-            </Modal>
-        </div>
-    );
+      <Modal
+        isOpen={selectedVideo !== null}
+        onRequestClose={closeVideoModal}
+        contentLabel="Reprodutor de Vídeo"
+        ariaHideApp={false}
+      >
+        {selectedVideo && (
+          <iframe
+            width="1000"
+            height="500"
+            src={selectedVideo}
+            title="Reprodutor de Vídeo"
+          ></iframe>
+        )}
+      </Modal>
+    </div>
+  );
 };
 
 export default MovieListDogs;

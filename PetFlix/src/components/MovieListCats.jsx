@@ -131,8 +131,8 @@ const MovieListCats = () => {
       >
         {selectedVideo && (
           <iframe
-            width="1260"
-            height="762"
+            width="1000"
+            height="500"
             src={selectedVideo}
             title="Reprodutor de Vídeo"
           ></iframe>
@@ -181,8 +181,8 @@ const MovieListCats = () => {
       >
         {selectedVideo && (
           <iframe
-            width="1260"
-            height="762"
+            width="1000"
+            height="500"
             src={selectedVideo}
             title="Reprodutor de Vídeo"
           ></iframe>
