@@ -78,10 +78,12 @@ const MovieListDogs = () => {
   const toggleTextVisibility = (index) => {
     const updatedShowText = [...showText];
     updatedShowText[index] = !updatedShowText[index];
-    const updatedShowText2 = [...showText];
-    updatedShowText[index] = !updatedShowText[index];
     setShowText(updatedShowText);
-    setShowText2(updatedShowText);
+  };
+  const toggleTextVisibility2 = (index) => {
+    const updatedShowText2 = [...showText2];
+    updatedShowText2[index] = !updatedShowText2[index];
+    setShowText2(updatedShowText2);
   };
 
   const imageExtensions = [".jpeg", ".jpg", ".png"];
@@ -139,7 +141,7 @@ const MovieListDogs = () => {
         )}
       </Modal>
       <div className="movie-list-title">
-        <p className="text-title-list">Para o seu cachorro Dormir</p>
+        <p className="text-title-list">Para o seu Cachorro Dormir</p>
       </div>
 
       <Slider {...settings}>
@@ -151,11 +153,11 @@ const MovieListDogs = () => {
               sleepingMoviesHovered === index ? "hovered" : ""
             }`}
             onMouseEnter={() => {
-              toggleTextVisibility(index);
+              toggleTextVisibility2(index);
               setSleepingMoviesHovered(index);
             }}
             onMouseLeave={() => {
-              toggleTextVisibility(index);
+              toggleTextVisibility2(index);
               setSleepingMoviesHovered(null);
             }}
           >
@@ -166,7 +168,7 @@ const MovieListDogs = () => {
                 alt={`cachorro Dormindo${index + 1}`}
               />
               {showText2[index] && (
-                <div className="movie-title">{`cachorro Fofo Dormindo`}</div>
+                <div className="movie-title">{`Cachorro Fofo Dormindo`}</div>
               )}
             </div>
           </div>
