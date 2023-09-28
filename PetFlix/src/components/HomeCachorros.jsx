@@ -7,43 +7,35 @@ import Modal from "react-modal";
 function HomeCachorros() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Função para reproduzir o áudio
   const playAudio = () => {
     const audio = new Audio("/audio-cachorro.mp3");
     audio.currentTime = 0;
     audio.play();
   };
 
-  // Adicione um evento de clique ao elemento document para reproduzir o áudio
   useEffect(() => {
     document.addEventListener("click", playAudio);
 
-    // Limpe o evento de clique quando o componente for desmontado
     return () => {
       document.removeEventListener("click", playAudio);
     };
   }, []);
 
-  // Função para abrir o modal
   const openModal = () => {
     setIsModalOpen(true);
   };
 
-  // Função para fechar o modal
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
-  // Função para reproduzir o áudio a cada 15 segundos
   useEffect(() => {
     const interval = setInterval(playAudio, 10000); // 15 segundos em milissegundos
 
-    // Limpe o intervalo quando o componente for desmontado
     return () => {
       clearInterval(interval);
     };
   }, []);
-  // Função para abrir o modal
 
   return (
     <div>
