@@ -34,6 +34,18 @@ function HomeGatos() {
     setIsModalOpen(false);
   };
 
+  // Função para reproduzir o áudio a cada 15 segundos
+  useEffect(() => {
+    const interval = setInterval(playAudio, 10000); // 15 segundos em milissegundos
+
+    // Limpe o intervalo quando o componente for desmontado
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+  // Função para abrir o modal
+
+
   return (
     <div>
       {/* <Menu /> */}
