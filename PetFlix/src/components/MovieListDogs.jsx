@@ -69,8 +69,8 @@ const MovieListDogs = () => {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
+    slidesToShow: 4,
+    slidesToScroll: 2,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
   };
