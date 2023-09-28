@@ -78,10 +78,13 @@ const MovieListCats = () => {
   const toggleTextVisibility = (index) => {
     const updatedShowText = [...showText];
     updatedShowText[index] = !updatedShowText[index];
-    const updatedShowText2 = [...showText];
-    updatedShowText[index] = !updatedShowText[index];
     setShowText(updatedShowText);
-    setShowText2(updatedShowText);
+  };
+
+  const toggleTextVisibility2 = (index) => {
+    const updatedShowText2 = [...showText2];
+    updatedShowText2[index] = !updatedShowText2[index];
+    setShowText2(updatedShowText2);
   };
 
   const imageExtensions = [".jpeg", ".jpg", ".png"];
@@ -89,7 +92,7 @@ const MovieListCats = () => {
   return (
     <div className="movie-list">
       <div className="movie-list-title">
-        <p className="text-title-list">Para o seu gato assistir</p>
+        <p className="text-title-list">Para seu Gato Assistir</p>
       </div>
 
       <Slider {...settings}>
@@ -139,7 +142,7 @@ const MovieListCats = () => {
         )}
       </Modal>
       <div className="movie-list-title">
-        <p className="text-title-list">Para o seu gato Dormir</p>
+        <p className="text-title-list">Para seu Gato Dormir</p>
       </div>
 
       <Slider {...settings}>
@@ -151,11 +154,11 @@ const MovieListCats = () => {
               sleepingMoviesHovered === index ? "hovered" : ""
             }`}
             onMouseEnter={() => {
-              toggleTextVisibility(index);
+              toggleTextVisibility2(index);
               setSleepingMoviesHovered(index);
             }}
             onMouseLeave={() => {
-              toggleTextVisibility(index);
+              toggleTextVisibility2(index);
               setSleepingMoviesHovered(null);
             }}
           >
