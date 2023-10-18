@@ -70,8 +70,8 @@
     width: 100%;
   }
   .background-image-home {
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
+    object-fit: cover;
+    height: 90%;
   }
   .subtitle-home {
     width: 90%;

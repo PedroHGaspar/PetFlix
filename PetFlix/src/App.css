@@ -399,3 +399,41 @@ iframe {
   justify-content: center;
   margin: 0 auto;
 }
+
+@media (max-width: 600px) {
+  .gato-perfil,
+  .cachorro-perfil {
+    width: 100px;
+    height: 100px;
+  }
+  .loading-content {
+    height: 30vh;
+  }
+  .loading-button-cachorro,
+  .loading-button-gato {
+  }
+
+  .align-home-text-images {
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: 60vh;
+  }
+  .nome-perfil {
+    width: auto;
+    height: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    margin: 1rem 0rem;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    color: #fff;
+  }
+}
