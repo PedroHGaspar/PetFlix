@@ -21,6 +21,7 @@ const MovieListCats = () => {
   const [sleepingMovies, setSleepingMovies] = useState([]);
 
   useEffect(() => {
+    // Inicialize o Firebase com sua configuração
     const firebaseConfig = {
       apiKey: "AIzaSyCzhuq6suPTr8IGH6nOtGsjH6HTOLlaNFg",
       authDomain: "petflix-37fdd.firebaseapp.com",
@@ -44,6 +45,7 @@ const MovieListCats = () => {
           const allLinks = Object.values(snapshot.val());
           setFirebaseLinks(allLinks);
 
+          // Divida os links em duas categorias
           const watchingMovies = allLinks.slice(0, 6); // 6 primeiros para assistir
           const sleepingMovies = allLinks.slice(6, 12); // Próximos 6 para dormir
 
@@ -56,6 +58,15 @@ const MovieListCats = () => {
       });
   }, []);
 
+  const openVideoModal = (videoUrl) => {
+    setSelectedVideo(videoUrl);
+  };
+
+  const closeVideoModal = () => {
+    setSelectedVideo(null);
+  };
+
+  // Defina as configurações padrão para o Slider
   const defaultSettings = {
     infinite: true,
     speed: 500,
@@ -65,52 +76,41 @@ const MovieListCats = () => {
     prevArrow: <CustomPrevArrow />,
   };
 
+  // Use o estado para rastrear as configurações atuais do Slider
   const [sliderSettings, setSliderSettings] = useState(defaultSettings);
 
   useEffect(() => {
+    // Verifique o tamanho da tela e atualize as configurações do Slider conforme necessário
     const updateSliderSettings = () => {
       if (window.innerWidth < 600) {
+        // Se a largura da tela for menor que 600px, mostre apenas 3 itens
         setSliderSettings({
           ...defaultSettings,
           slidesToShow: 3,
         });
       } else {
+        // Caso contrário, use as configurações padrão
         setSliderSettings(defaultSettings);
       }
     };
 
+    // Adicione um ouvinte de redimensionamento para monitorar alterações na largura da tela
     window.addEventListener("resize", updateSliderSettings);
 
+    // Execute a função de atualização inicialmente
     updateSliderSettings();
 
+    // Certifique-se de remover o ouvinte ao desmontar o componente
     return () => {
       window.removeEventListener("resize", updateSliderSettings);
     };
   }, []);
-
-  const openVideoModal = (videoUrl) => {
-    setSelectedVideo(videoUrl);
-  };
-
-  const closeVideoModal = () => {
-    setSelectedVideo(null);
-  };
-
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 2,
-    nextArrow: <CustomNextArrow />,
-    prevArrow: <CustomPrevArrow />,
-  };
 
   const toggleTextVisibility = (index) => {
     const updatedShowText = [...showText];
     updatedShowText[index] = !updatedShowText[index];
     setShowText(updatedShowText);
   };
-
   const toggleTextVisibility2 = (index) => {
     const updatedShowText2 = [...showText2];
     updatedShowText2[index] = !updatedShowText2[index];

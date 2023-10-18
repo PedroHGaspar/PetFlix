@@ -1,79 +1,79 @@
 .movie-slide {
-    position: relative;
-    cursor: pointer;
+  position: relative;
+  cursor: pointer;
 }
 
 .slide-content {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .img-list {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    transition: opacity 0.3s ease;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
 }
-
 
 /* .movie-slide.show-text .img-list {
     opacity: 0.7;
 } */
 
 .movie-title {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #141414d2;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-size: 16px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    width: 110%;
-    font-weight: bold;
-    letter-spacing: 1px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #141414d2;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  width: 110%;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .movie-slide.show-text .movie-title {
-    opacity: 1;
+  opacity: 1;
 }
 
 .hovered img {
-    transform: scale(1.2);
-    transition: transform 0.6s ease;
-    opacity: 0.75;
+  transform: scale(1.2);
+  transition: transform 0.6s ease;
+  opacity: 0.75;
 }
 
 .movie-list-title {
-    display: flex;
-    font-size: 1.4vw;
-    /* line-height: 1.25vw; */
-    vertical-align: bottom;
-    color: #fff;
-    margin-left: 4vw;
+  display: flex;
+  font-size: 1.4vw;
+  /* line-height: 1.25vw; */
+  vertical-align: bottom;
+  color: #fff;
+  margin-left: 4vw;
 }
 
 .text-title-list {
-    font-family: sans-serif;
-    letter-spacing: 2px;
-    font-weight: 500;
+  font-family: sans-serif;
+  letter-spacing: 2px;
+  font-weight: 500;
 }
 
-
-@media (max-width: 600px){
-    .movie-list{
-        margin-top: 5vh;
-    }
-    .sinopse-home, .elenco-home{
-        width: 100%;
-    }
-    .background-image-home{
-        width: auto;
-    }
-    .subtitle-home{
-        width: 90%;
-    }
+@media (max-width: 600px) {
+  .movie-list {
+    margin-top: 5vh;
+  }
+  .sinopse-home,
+  .elenco-home {
+    width: 100%;
+  }
+  .background-image-home {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+  }
+  .subtitle-home {
+    width: 90%;
+  }
 }
