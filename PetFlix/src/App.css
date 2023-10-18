@@ -403,8 +403,8 @@ iframe {
 @media (max-width: 600px) {
   .gato-perfil,
   .cachorro-perfil {
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
   }
   .loading-content {
     height: 30vh;
@@ -416,7 +416,7 @@ iframe {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    height: 60vh;
+    height: 80vh;
   }
   .nome-perfil {
     width: auto;
@@ -436,5 +436,8 @@ iframe {
   iframe {
     width: 98%;
     height: 98%;
+  }
+  .quem-assiste {
+    font-size: 5.5vw;
   }
 }
