@@ -63,7 +63,7 @@
 
 @media (max-width: 600px) {
   .movie-list {
-    margin-top: 5vh;
+    margin-top: 0vh;
   }
   .sinopse-home,
   .elenco-home {
@@ -75,5 +75,11 @@
   }
   .subtitle-home {
     width: 90%;
+  }
+  .text-title-list{
+    font-size: 1rem;
+  }
+  .content-body-filme-principal{
+    margin: 0rem 0rem;
   }
 }
