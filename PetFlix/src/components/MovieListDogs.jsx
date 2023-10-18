@@ -214,8 +214,8 @@ const MovieListDogs = () => {
       >
         {selectedVideo && (
           <iframe
-            width="100%"
-            height="100%"
+            width="98%"
+            height="98%"
             src={selectedVideo}
             title="Reprodutor de Vídeo"
           ></iframe>

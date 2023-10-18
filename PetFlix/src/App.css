@@ -409,9 +409,6 @@ iframe {
   .loading-content {
     height: 30vh;
   }
-  .loading-button-cachorro,
-  .loading-button-gato {
-  }
 
   .align-home-text-images {
     height: auto;
@@ -435,5 +432,9 @@ iframe {
     letter-spacing: 1px;
     font-family: sans-serif;
     color: #fff;
+  }
+  iframe {
+    width: 98%;
+    height: 98%;
   }
 }

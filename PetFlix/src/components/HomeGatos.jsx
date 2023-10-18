@@ -84,8 +84,8 @@ function HomeGatos() {
         ariaHideApp={false}
       >
         <iframe
-          width="1260"
-          height="762"
+          width="98%"
+          height="98%"
           src="https://www.youtube.com/embed/i-80SGWfEjM?si=TBcMChZlkNsmFFbR"
           title="Reprodutor de Vídeo"
         ></iframe>
