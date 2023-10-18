@@ -61,3 +61,19 @@
     letter-spacing: 2px;
     font-weight: 500;
 }
+
+
+@media (max-width: 600px){
+    .movie-list{
+        margin-top: 5vh;
+    }
+    .sinopse-home, .elenco-home{
+        width: 100%;
+    }
+    .background-image-home{
+        width: auto;
+    }
+    .subtitle-home{
+        width: 90%;
+    }
+}
