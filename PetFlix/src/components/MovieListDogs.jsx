@@ -4,8 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Modal from "react-modal";
 import axios from "axios";
-import { initializeApp } from "firebase/app"; // Importe a função initializeApp
-import { getDatabase, ref, get } from "firebase/database"; // Importe as funções necessárias do Realtime Database
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, get } from "firebase/database";
 import "./CustomArrows.css";
 import { CustomNextArrow, CustomPrevArrow } from "./CustomArrows";
 import "./MovieList.css";
@@ -66,7 +66,8 @@ const MovieListDogs = () => {
     setSelectedVideo(null);
   };
 
-  const settings = {
+  // Defina as configurações padrão para o Slider
+  const defaultSettings = {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
@@ -74,6 +75,36 @@ const MovieListDogs = () => {
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
   };
+
+  // Use o estado para rastrear as configurações atuais do Slider
+  const [sliderSettings, setSliderSettings] = useState(defaultSettings);
+
+  useEffect(() => {
+    // Verifique o tamanho da tela e atualize as configurações do Slider conforme necessário
+    const updateSliderSettings = () => {
+      if (window.innerWidth < 600) {
+        // Se a largura da tela for menor que 600px, mostre apenas 3 itens
+        setSliderSettings({
+          ...defaultSettings,
+          slidesToShow: 3,
+        });
+      } else {
+        // Caso contrário, use as configurações padrão
+        setSliderSettings(defaultSettings);
+      }
+    };
+
+    // Adicione um ouvinte de redimensionamento para monitorar alterações na largura da tela
+    window.addEventListener("resize", updateSliderSettings);
+
+    // Execute a função de atualização inicialmente
+    updateSliderSettings();
+
+    // Certifique-se de remover o ouvinte ao desmontar o componente
+    return () => {
+      window.removeEventListener("resize", updateSliderSettings);
+    };
+  }, []);
 
   const toggleTextVisibility = (index) => {
     const updatedShowText = [...showText];
@@ -94,7 +125,7 @@ const MovieListDogs = () => {
         <p className="text-title-list">Para o seu cachorro assistir</p>
       </div>
 
-      <Slider {...settings}>
+      <Slider {...sliderSettings}>
         {watchingMovies.map((videoUrl, index) => (
           <div
             key={index}
@@ -144,7 +175,7 @@ const MovieListDogs = () => {
         <p className="text-title-list">Para o seu Cachorro Dormir</p>
       </div>
 
-      <Slider {...settings}>
+      <Slider {...sliderSettings}>
         {sleepingMovies.map((videoUrl, index) => (
           <div
             key={index}
@@ -183,8 +214,8 @@ const MovieListDogs = () => {
       >
         {selectedVideo && (
           <iframe
-            width="1000"
-            height="500"
+            width="100%"
+            height="100%"
             src={selectedVideo}
             title="Reprodutor de Vídeo"
           ></iframe>

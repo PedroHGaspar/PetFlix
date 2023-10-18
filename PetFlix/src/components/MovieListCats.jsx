@@ -4,8 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Modal from "react-modal";
 import axios from "axios";
-import { initializeApp } from "firebase/app"; // Importe a função initializeApp
-import { getDatabase, ref, get } from "firebase/database"; // Importe as funções necessárias do Realtime Database
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, get } from "firebase/database";
 import "./CustomArrows.css";
 import { CustomNextArrow, CustomPrevArrow } from "./CustomArrows";
 import "./MovieList.css";
@@ -21,7 +21,6 @@ const MovieListCats = () => {
   const [sleepingMovies, setSleepingMovies] = useState([]);
 
   useEffect(() => {
-    // Inicialize o Firebase com sua configuração
     const firebaseConfig = {
       apiKey: "AIzaSyCzhuq6suPTr8IGH6nOtGsjH6HTOLlaNFg",
       authDomain: "petflix-37fdd.firebaseapp.com",
@@ -45,7 +44,6 @@ const MovieListCats = () => {
           const allLinks = Object.values(snapshot.val());
           setFirebaseLinks(allLinks);
 
-          // Divida os links em duas categorias
           const watchingMovies = allLinks.slice(0, 6); // 6 primeiros para assistir
           const sleepingMovies = allLinks.slice(6, 12); // Próximos 6 para dormir
 
@@ -56,6 +54,38 @@ const MovieListCats = () => {
       .catch((error) => {
         console.error("Erro ao buscar os links do Firebase:", error);
       });
+  }, []);
+
+  const defaultSettings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 2,
+    nextArrow: <CustomNextArrow />,
+    prevArrow: <CustomPrevArrow />,
+  };
+
+  const [sliderSettings, setSliderSettings] = useState(defaultSettings);
+
+  useEffect(() => {
+    const updateSliderSettings = () => {
+      if (window.innerWidth < 600) {
+        setSliderSettings({
+          ...defaultSettings,
+          slidesToShow: 3,
+        });
+      } else {
+        setSliderSettings(defaultSettings);
+      }
+    };
+
+    window.addEventListener("resize", updateSliderSettings);
+
+    updateSliderSettings();
+
+    return () => {
+      window.removeEventListener("resize", updateSliderSettings);
+    };
   }, []);
 
   const openVideoModal = (videoUrl) => {
@@ -95,7 +125,7 @@ const MovieListCats = () => {
         <p className="text-title-list">Para seu Gato Assistir</p>
       </div>
 
-      <Slider {...settings}>
+      <Slider {...sliderSettings}>
         {watchingMovies.map((videoUrl, index) => (
           <div
             key={index}
@@ -145,7 +175,7 @@ const MovieListCats = () => {
         <p className="text-title-list">Para seu Gato Dormir</p>
       </div>
 
-      <Slider {...settings}>
+      <Slider {...sliderSettings}>
         {sleepingMovies.map((videoUrl, index) => (
           <div
             key={index}
@@ -184,8 +214,8 @@ const MovieListCats = () => {
       >
         {selectedVideo && (
           <iframe
-            width="1000"
-            height="500"
+            width="100%"
+            height="100%"
             src={selectedVideo}
             title="Reprodutor de Vídeo"
           ></iframe>
